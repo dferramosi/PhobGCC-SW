@@ -3,6 +3,7 @@
 
 #include "storage/page_indexes.hpp"
 #include "structsAndEnums.h"
+#include <GamepadStorage.h>
 
 namespace Persistence {
 namespace Pages {
@@ -111,6 +112,9 @@ void  setExtrasSettingFloat(const ExtrasSlot, const int, const float);
 
 int getSchemaSetting();
 void setSchemaSetting(const int);
+
+GamepadOptions getMPGSetting();
+void setMPGSetting(const GamepadOptions);
 
 #endif //STORAGE_H
 

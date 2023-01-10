@@ -887,7 +887,7 @@ void applyCalFromPoints(const WhichStick whichStick, float notchAngles[], const 
 };
 
 
-int readEEPROM(ControlConfig &controls, FilterGains &gains, FilterGains &normGains, StickParams &aStickParams, StickParams &cStickParams, const bool noLock = false){
+int readEEPROM(ControlConfig &controls, FilterGains &gains, FilterGains &normGains, StickParams &aStickParams, StickParams &cStickParams, MPGParams &mpgParams, const bool noLock = false){
 	int numberOfNaN = 0;
 
 	//get the jump setting

@@ -42,7 +42,8 @@ namespace Eeprom {
 	const int _eepromExtrasLeft = _eepromExtrasDown+_bytesPerFloat*4;
 	const int _eepromExtrasRight = _eepromExtrasLeft+_bytesPerFloat*4;
 	const int _eepromSchema = _eepromExtrasRight+_bytesPerFloat*4;
-	//const int _nextSetting = _eepromSchema+bytesPerFloat;
+	const int _eepromMPGSetting = _eepromSchema+_bytesPerFloat;
+	//const int _nextSetting = _eepromMPGSetting+bytesPerFloat;
 };
 
 JumpConfig getJumpSetting() {
@@ -416,5 +417,15 @@ int getSchemaSetting() {
 void setSchemaSetting(const int schema) {
 	EEPROM.put(Eeprom::_eepromSchema, schema);
 };
+
+GamepadOptions getMPGSetting() {
+	GamepadOptions output;
+	EEPROM.get(Eeprom::_eepromMPGSetting, output);
+	return output;
+}
+void setMPGSetting(const GamepadOptions mpgSetting) {
+	getStoragePage();
+	_storage.settings.mpgSetting = mpgSetting;
+}
 
 #endif //SETTINGS_H

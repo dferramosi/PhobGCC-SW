@@ -160,11 +160,11 @@ int main() {
 	//set_sys_clock_khz(1000*_us, true);
 
 	//Read settings
-	const int numberOfNaN = readEEPROM(_controls, _gains, _normGains, _aStickParams, _cStickParams, true);
+	const int numberOfNaN = readEEPROM(_controls, _gains, _normGains, _aStickParams, _cStickParams, _mpgSettings, true);
 
 	if(numberOfNaN > 10){//by default it seems 16 end up unitialized on pico
-		resetDefaults(FACTORY, _controls, _gains, _normGains, _aStickParams, _cStickParams, true);
-		readEEPROM(_controls, _gains, _normGains, _aStickParams, _cStickParams, true);
+		resetDefaults(FACTORY, _controls, _gains, _normGains, _aStickParams, _cStickParams, _mpgSettings, true);
+		readEEPROM(_controls, _gains, _normGains, _aStickParams, _cStickParams, _mpgSettings, true);
 	}
 
 	setPinModes();

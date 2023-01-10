@@ -4,6 +4,8 @@
 
 #include "common/phobGCC.h"
 
+#include "common/gamepad.h" // This is needed to have a var to set for MPGsettings, but is not used"
+
 extern "C" uint32_t set_arm_clock(uint32_t frequency);
 
 void setup() {
@@ -20,13 +22,12 @@ void setup() {
 	//for some reason, 150 MHz doesn't work with the new comms code. 300 seems to be enough.
 	set_arm_clock(300'000'000);
 #endif //TEENSY4_0
-
-	const int numberOfNaN = readEEPROM(_controls, _gains, _normGains, _aStickParams, _cStickParams);
+	const int numberOfNaN = readEEPROM(_controls, _gains, _normGains, _aStickParams, _cStickParams, _mpgSettings);
 	Serial.print("Number of NaN in EEPROM: ");
 	Serial.println(numberOfNaN);
 	if(numberOfNaN > 10){//by default it seems 16 end up uninitialized on Teensy 4
 		resetDefaults(FACTORY, _controls, _gains, _normGains, _aStickParams, _cStickParams);//do reset sticks
-		readEEPROM(_controls, _gains, _normGains, _aStickParams, _cStickParams);
+		readEEPROM(_controls, _gains, _normGains, _aStickParams, _cStickParams, _mpgSettings);
 	}
 
 	//set some of the unused values in the message response

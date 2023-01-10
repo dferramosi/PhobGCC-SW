@@ -43,6 +43,7 @@ void getStoragePage() {
 			_storage.settings.lExtras[i].intValue = temp.settings.lExtras[i].intValue;
 			_storage.settings.rExtras[i].intValue = temp.settings.rExtras[i].intValue;
 		}
+		_storage.settings.mpgSetting = temp.settings.mpgSetting;
 		_storage.settings.schema = temp.settings.schema;
 		fresh = true;
 	}
@@ -373,3 +374,11 @@ void setSchemaSetting(const int s) {
 	_storage.settings.schema = s;
 }
 
+GamepadOptions getMPGSetting() {
+	getStoragePage();
+	return _storage.settings.mpgSetting;
+}
+void setMPGSetting(const GamepadOptions mpgSetting) {
+	getStoragePage();
+	_storage.settings.mpgSetting = mpgSetting;
+}
